@@ -1,4 +1,5 @@
-﻿using Colaboro.Services;
+﻿using Colaboro.Models;
+using Colaboro.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +17,18 @@ namespace Colaboro.ViewModels
 
         public LoginViewModel(INavigationService navigationService)
         {
-            AuthenticateCommand = new Command(() =>
+            AuthenticateCommand = new Command( () =>
             {
                 AreCredentialsInvalid = !UserAuthenticated(Username, Password);
                 //if (AreCredentialsInvalid) return;
                 App.IsUserLoggedIn = true;
                 //navigationService.GoBack();
-                navigationService.NavigateAsync(PageNames.MainPage);
+                 navigationService.NavigateAsync(PageNames.MainPage);
+                var userLoged = new Usuario();
+                userLoged.Username = Username;
+                userLoged.Password = Password;
+                userLoged.Ativo = true;
+                 App.Database.SaveUserAsync(userLoged);
             });
 
             //AreCredentialsInvalid = false;

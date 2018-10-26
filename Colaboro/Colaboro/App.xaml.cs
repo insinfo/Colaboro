@@ -2,6 +2,10 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.IO;
+using System.Diagnostics;
+using Colaboro.Data;
+using System.Threading.Tasks;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Colaboro
@@ -11,14 +15,37 @@ namespace Colaboro
         private static readonly FormsNavigationService _navigationService =
             new FormsNavigationService();
 
+        static ColaboroDatabase database;
+
         public App()
         {
             InitializeComponent();
+            //IsUserLoggedIn = true;
 
-            _navigationService.Configure(PageNames.LoginPage, typeof(Views.LoginPage));
+            var t = AsyncHelpers.RunSync<bool>(() => Database.IsUser());
+            
+            if (t)
+            {
+                IsUserLoggedIn = true;
+                
+            }
+
+             _navigationService.Configure(PageNames.LoginPage, typeof(Views.LoginPage));
             _navigationService.Configure(PageNames.MainPage, typeof(Views.MainPage));
 
             MainPage = _navigationService.SetRootPage(nameof(Views.MainPage));
+        }
+
+        public static ColaboroDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new ColaboroDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ColaboroSQLite.db3"));
+                }
+                return database;
+            }
         }
 
         public static INavigationService NavigationService { get; } = _navigationService;
