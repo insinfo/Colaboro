@@ -1,31 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Colaboro.Views.LoginPage">
-    <!-- the base class -->
-    
+             x:Class="Colaboro.Views.LoginPage"
+             Padding="0"
+             BackgroundColor="#3b4455"
+             >
+
     <ContentPage.Content>
-        <Grid Margin="16">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0">
-                <Label Text="Bem vindo!" />
-                <Entry x:Name="UsernameEntry" 
-                       Text="{Binding Username}"
-                       Placeholder="Username" />
-                <Entry x:Name="PasswordEntry"
-                       Text="{Binding Password}"
-                       Placeholder="Password"
-                       IsPassword="True" />
-                <Label Text="Invalid credentials entered" 
-                       IsVisible="{Binding AreCredentialsInvalid}" 
-                       TextColor="Red" />
-                <Button Grid.Row="2" Text="Entrar" Command="{Binding AuthenticateCommand}" />
+        <ScrollView VerticalScrollBarVisibility="Never" >
+
+            <StackLayout Spacing="10">
+                <!-- left, top, right, bottom -->
+                <Image Source="jubarteLogo.png" WidthRequest="150" Margin="0,40,0,5"></Image>
+                <StackLayout Spacing="10" Margin="16">
+
+                    <Entry x:Name="UsernameEntry" Text=""  
+                       Placeholder="Usuario" HeightRequest="40" BackgroundColor="White"/>
+
+                    <Entry x:Name="PasswordEntry" Text="" 
+                       Placeholder="Senha"
+                       IsPassword="True" HeightRequest="40" BackgroundColor="White"/>
+
+                    <Label Text="Usuario ou senha invalidos" 
+                       IsVisible="False" 
+                       TextColor="#ffffff" />
+
+                    <Button  Text="Entrar" BackgroundColor="#5fd0d0" TextColor="#ffffff" />
+                    <Button  Text="Cadastrar" BackgroundColor="BlueViolet" TextColor="#ffffff"  />
+                </StackLayout>
+                <Button  Text="Esqueceu a senha?" BackgroundColor="Transparent" TextColor="#ffffff"  />
+
+                <Image Source="prefeituraLogo.png" WidthRequest="120" Margin="10"></Image>
             </StackLayout>
-           
-        </Grid>
+
+        </ScrollView>
+
     </ContentPage.Content>
+
 </ContentPage>

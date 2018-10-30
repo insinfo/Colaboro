@@ -12,46 +12,14 @@ namespace Colaboro
 {         
     public partial class App : Application
     {
-        private static readonly FormsNavigationService _navigationService =
-            new FormsNavigationService();
-
-        static ColaboroDatabase database;
+       
 
         public App()
         {
-            InitializeComponent();
-            //IsUserLoggedIn = true;
+            InitializeComponent();          
 
-            var t = AsyncHelpers.RunSync<bool>(() => Database.IsUser());
-            
-            if (t)
-            {
-                IsUserLoggedIn = true;
-                
-            }
-
-             _navigationService.Configure(PageNames.LoginPage, typeof(Views.LoginPage));
-            _navigationService.Configure(PageNames.MainPage, typeof(Views.MainPage));
-
-            MainPage = _navigationService.SetRootPage(nameof(Views.MainPage));
-        }
-
-        public static ColaboroDatabase Database
-        {
-            get
-            {
-                if (database == null)
-                {
-                    database = new ColaboroDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ColaboroSQLite.db3"));
-                }
-                return database;
-            }
-        }
-
-        public static INavigationService NavigationService { get; } = _navigationService;
-
-        // Use a service for providing this information
-        public static bool IsUserLoggedIn { get; set; }
+            MainPage = new  Views.LoginPage();
+        }              
 
         protected override void OnStart()
         {
