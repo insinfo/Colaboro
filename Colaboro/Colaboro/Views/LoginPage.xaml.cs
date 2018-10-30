@@ -9,15 +9,21 @@ namespace Colaboro.Views
     {
         public LoginPage()
         {
-            InitializeComponent();  
+            InitializeComponent();
+            btnCadastro.Clicked += BtnCadastro_Clicked;
         }
-       
+
+        private async void BtnCadastro_Clicked(object sender, System.EventArgs e)
+        {          
+            await Navigation.PushAsync(new CadastroPage());
+        }
+
         /*
         protected override bool OnBackButtonPressed()
         {
             return true;
         }
         */
-       
+
     }
 }

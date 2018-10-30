@@ -11,14 +11,20 @@ using System.Threading.Tasks;
 namespace Colaboro
 {         
     public partial class App : Application
-    {
-       
+    {      
 
         public App()
         {
-            InitializeComponent();          
+            InitializeComponent();
 
-            MainPage = new  Views.LoginPage();
+            Resources = new ResourceDictionary();
+            Resources.Add("secundary", Color.FromHex("3b4455"));
+            Resources.Add("primary", Color.FromHex("FFFFFF"));
+
+            var nav = new NavigationPage(new Views.LoginPage());
+            nav.BarBackgroundColor = (Color)App.Current.Resources["secundary"];
+            nav.BarTextColor = (Color)App.Current.Resources["primary"];
+            MainPage = nav;
         }              
 
         protected override void OnStart()
