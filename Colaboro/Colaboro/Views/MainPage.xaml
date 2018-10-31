@@ -2,17 +2,103 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Colaboro"
-             x:Class="Colaboro.Views.MainPage"             
+             x:Class="Colaboro.Views.MainPage"    
+              Padding="0"
+             BackgroundColor="#3b4455"
              >
-    
-    <ContentPage.Resources>
-        <StyleSheet Source="/Assets/styles.css" />
-    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <!--<ListView x:Name="listView" Margin="20" ItemSelected="OnListItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                            <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate> 
+        </ListView>  -->
+        <StackLayout Orientation="Vertical">
+            <Label Text="Serviços" Margin="0,22,0,10" FontSize="25" TextColor="White" HorizontalTextAlignment="Center"></Label>
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
+                         Padding="20"
+                      BackgroundColor="Accent" >
+                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
+                        <Label Text="Troca de lampada com defeito"
+                   FontSize="25"
+                   TextColor="White"
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
+
+                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
+                         Padding="20"
+                      BackgroundColor="Accent" >
+                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
+                        <Label Text="Troca de lampada com defeito"
+                   FontSize="25"
+                   TextColor="White"
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
+                         Padding="20"
+                      BackgroundColor="Accent" >
+                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
+                        <Label Text="Troca de lampada com defeito"
+                   FontSize="25"
+                   TextColor="White"
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
+                         Padding="20"
+                      BackgroundColor="Accent" >
+                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
+                        <Label Text="Troca de lampada com defeito"
+                   FontSize="25"
+                   TextColor="White"
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
+                         Padding="20"
+                      BackgroundColor="Accent" >
+                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
+                        <Label Text="Troca de lampada com defeito"
+                   FontSize="25"
+                   TextColor="White"
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
+                         Padding="20"
+                      BackgroundColor="Accent" >
+                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
+                        <Label Text="Troca de lampada com defeito"
+                   FontSize="25"
+                   TextColor="White"
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
+                         Padding="20"
+                      BackgroundColor="Accent" >
+                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
+                        <Label Text="Troca de lampada com defeito"
+                   FontSize="25"
+                   TextColor="White"
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
 
 
-    <Button Text="Logout" 
-            Command="{Binding LogoutCommand}"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
+    </ContentPage.Content>
 </ContentPage>

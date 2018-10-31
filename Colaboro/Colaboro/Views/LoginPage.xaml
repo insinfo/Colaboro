@@ -11,13 +11,13 @@
 
             <StackLayout Spacing="10">
                 <!-- left, top, right, bottom -->
-                <Image Source="jubarteLogo.png" WidthRequest="110" Margin="0,0,0,5"></Image>
+                <Image Source="jubarteLogo.png" WidthRequest="110" Margin="0,40,0,5"></Image>
                 <StackLayout Spacing="10" Margin="16" >
 
-                    <Entry x:Name="UsernameEntry" Text=""  
+                    <Entry x:Name="usernameEntry" Text=""  
                        Placeholder="Usuario" HeightRequest="40" BackgroundColor="White"/>
 
-                    <Entry x:Name="PasswordEntry" Text="" 
+                    <Entry x:Name="passwordEntry" Text="" 
                        Placeholder="Senha"
                        IsPassword="True" HeightRequest="40" BackgroundColor="White"/>
 
@@ -25,11 +25,14 @@
                        IsVisible="False" 
                        TextColor="#ffffff" />
 
-                    <Button x:Name="btnLogar" FontSize="15" HeightRequest="40" Text="Entrar" BackgroundColor="#5fd0d0" TextColor="#ffffff" />
-                    <Button x:Name="btnCadastro" FontSize="15" HeightRequest="40" Text="Cadastrar" BackgroundColor="BlueViolet" TextColor="#ffffff"  />
+
+                    <Button x:Name="btnEntrar" HeightRequest="40" Text="Entrar" BackgroundColor="#5fd0d0" TextColor="#ffffff" />
+                    <Button x:Name="btnCadastrar" HeightRequest="40" Text="Cadastrar" BackgroundColor="BlueViolet" TextColor="#ffffff"  />
+
                
+
                 </StackLayout>
-                <Button  Text="Esqueceu a senha?" BackgroundColor="Transparent" TextColor="#ffffff"  />
+                <Button x:Name="btnEsqueceuSenha"  Text="Esqueceu a senha?" BackgroundColor="Transparent" TextColor="#ffffff"  />
 
                 <Image Source="prefeituraLogo.png" WidthRequest="120" Margin="10"></Image>
             </StackLayout>
