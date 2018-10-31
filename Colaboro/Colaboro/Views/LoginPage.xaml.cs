@@ -24,6 +24,11 @@ namespace Colaboro.Views
             btnEntrar.Clicked += BtnEntrar_Clicked;
         }
 
+        private void BtnCadastrar_Clicked(object sender, EventArgs e)
+        {
+            //await Navigation.PushAsync(new CadastroPage());
+        }
+
         private async void ShowAlert(string mensagem)
         {
             await DisplayAlert("Atenção", mensagem, "Ok");
@@ -110,11 +115,7 @@ namespace Colaboro.Views
              }*/
         }
 
-        private void BtnCadastrar_Clicked(object sender, System.EventArgs e)
-        {
-           
-        }
-
+       
         /*
         protected override bool OnBackButtonPressed()
         {
