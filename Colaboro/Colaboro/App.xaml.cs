@@ -11,13 +11,10 @@ using System.Threading.Tasks;
 namespace Colaboro
 {         
     public partial class App : Application
-    {
-       
-
+    {       
         public App()
         {
             InitializeComponent();          
-
             MainPage = new  Views.LoginPage();
         }              
 

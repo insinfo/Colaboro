@@ -14,10 +14,10 @@
                 <Image Source="jubarteLogo.png" WidthRequest="150" Margin="0,40,0,5"></Image>
                 <StackLayout Spacing="10" Margin="16">
 
-                    <Entry x:Name="UsernameEntry" Text=""  
+                    <Entry x:Name="usernameEntry" Text=""  
                        Placeholder="Usuario" HeightRequest="40" BackgroundColor="White"/>
 
-                    <Entry x:Name="PasswordEntry" Text="" 
+                    <Entry x:Name="passwordEntry" Text="" 
                        Placeholder="Senha"
                        IsPassword="True" HeightRequest="40" BackgroundColor="White"/>
 
@@ -25,10 +25,11 @@
                        IsVisible="False" 
                        TextColor="#ffffff" />
 
-                    <Button  Text="Entrar" BackgroundColor="#5fd0d0" TextColor="#ffffff" />
-                    <Button  Text="Cadastrar" BackgroundColor="BlueViolet" TextColor="#ffffff"  />
+                    <Button  x:Name="btnEntrar" Text="Entrar" BackgroundColor="#5fd0d0" TextColor="#ffffff" />
+                    <Button x:Name="btnCadastrar" Text="Cadastrar" BackgroundColor="BlueViolet" TextColor="#ffffff"  />
+                    
                 </StackLayout>
-                <Button  Text="Esqueceu a senha?" BackgroundColor="Transparent" TextColor="#ffffff"  />
+                <Button x:Name="btnEsqueceuSenha"  Text="Esqueceu a senha?" BackgroundColor="Transparent" TextColor="#ffffff"  />
 
                 <Image Source="prefeituraLogo.png" WidthRequest="120" Margin="10"></Image>
             </StackLayout>
