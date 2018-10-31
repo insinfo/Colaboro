@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Colaboro.Views.CadastroPage"
+             Padding="16"
+             BackgroundColor="#3b4455"
+             >
+    <!-- comentario -->
+
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never" >                    
+            <StackLayout Spacing="10">
+                
+                <Label TextColor="White" FontSize="30" HorizontalTextAlignment="Center" Margin="0,10,0,10">Cadastro</Label>
+                
+                <Entry x:Name="nomeEntry" Text="" Placeholder="Nome" HeightRequest="40" />
+                <Entry x:Name="cpfEntry" Text="" Placeholder="CPF" HeightRequest="40" />
+                
+                <Entry x:Name="emailEntry" Text="" Placeholder="E-mail" HeightRequest="40" />                
+                <Entry x:Name="passwordEntry"  Text="" Placeholder="Senha" IsPassword="True" HeightRequest="40" />
+                <Entry x:Name="rpeatPasswordEntry" Text="" Placeholder="E-mail" HeightRequest="40" />
+
+                <Button  Text="Cadastrar" BackgroundColor="BlueViolet" TextColor="#ffffff"  />
+
+               
+
+            </StackLayout>
+           
+      
+
+        </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

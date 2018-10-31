@@ -14,8 +14,10 @@ namespace Colaboro.Views
         }
 
         private async void BtnCadastro_Clicked(object sender, System.EventArgs e)
-        {          
-            await Navigation.PushAsync(new CadastroPage());
+        {
+            // await Navigation.PushAsync(new CadastroPage());
+
+            await Navigation.PushModalAsync(new CadastroPage());
         }
 
         /*
