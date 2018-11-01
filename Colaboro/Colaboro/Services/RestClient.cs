@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Runtime.InteropServices;
@@ -189,7 +190,55 @@ namespace Colaboro.Services
             
         }
 
+        /*exemplo de uso 
+        Você precisa fazer isso desde que você está chamando o asyncmétodo de forma síncrona 
+            Task<string> result = Send(fullReq, "");
+            Debug.WriteLine("result:: " + result.Result); // Call the Result
+        Pense no Task<string> tipo de retorno como uma 'promessa' para retornar um valor no futuro.
+        Se você chamou o método assíncrono de forma assíncrona, então seria como o seguinte:    
+            string result = await Send(fullReq, "");
+            Debug.WriteLine("result:: " + result);
+        */
+        public async Task<string> Send(string requestUrl, string json)
+        {
+            try
+            {
+                Uri requestUri = new Uri(requestUrl);
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Clear();
+                    //adding things to header and creating requestcontent
+                    var response = await client.PostAsync(requestUri, GetHttpContent());
+
+                    if (response.IsSuccessStatusCode)
+                    {
+
+                        Debug.WriteLine("Success");
+                        HttpContent stream = response.Content;
+                        //Task<string> data = stream.ReadAsStringAsync();    
+                        var data = await stream.ReadAsStringAsync();
+                        Debug.WriteLine("data len: " + data.Length);
+                        Debug.WriteLine("data: " + data);
+                        return data;
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Unsuccessful!");
+                        Debug.WriteLine("response.StatusCode: " + response.StatusCode);
+                        Debug.WriteLine("response.ReasonPhrase: " + response.ReasonPhrase);
+                        HttpContent stream = response.Content;
+                        var data = await stream.ReadAsStringAsync();
+                        return data;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("ex: " + ex.Message);
+                return null;
+            }
+        }
 
 
-    }
+        }
 }
