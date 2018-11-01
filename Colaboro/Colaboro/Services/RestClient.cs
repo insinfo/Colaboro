@@ -13,7 +13,7 @@ namespace Colaboro.Services
     public class RestClient
     {
         public string Method { get; set; } = "POST";
-        public string WebserviceURL { get; set; } = null;    
+        public string WebserviceURL { get; set; } = null;
         public string DataTypeFormat { get; set; } = "json";
         public object DataToSender { get; set; } = null;
         public string SenderDataFormat { get; set; } = "application/json";
@@ -25,9 +25,9 @@ namespace Colaboro.Services
         private HttpClient client = null;
 
         public RestClient()
-        {            
-            this.client = new HttpClient(); 
-            this.client.DefaultRequestHeaders.Add("User-Agent", "App Jubarte from "+ RuntimeInformation.OSDescription);
+        {
+            this.client = new HttpClient();
+            this.client.DefaultRequestHeaders.Add("User-Agent", "App Jubarte from " + RuntimeInformation.OSDescription);
         }
 
         public void SetMethodGET()
@@ -60,17 +60,17 @@ namespace Colaboro.Services
             this.SenderDataFormat = "application/x-www-form-urlencoded";
         }
 
-        public void SetSenderJsonFormat ()
+        public void SetSenderJsonFormat()
         {
             this.SenderDataFormat = "application/json";
         }
 
-        public void SenderTextPlainFormatFormat ()
+        public void SenderTextPlainFormatFormat()
         {
             this.SenderDataFormat = "text/plain";
         }
 
-        public void SetReceiverDataTypeFormat (string dataTypeFormat)
+        public void SetReceiverDataTypeFormat(string dataTypeFormat)
         {
             this.DataTypeFormat = dataTypeFormat;
         }
@@ -91,62 +91,69 @@ namespace Colaboro.Services
             return null;
         }
 
-        public async Task<string> Exec(string routeRest="")
-        {           
+        public async Task<string> Exec(string routeRest = "")
+        {
             var resp = string.Empty;
-           
-           // client.BaseAddress = new Uri(this.WebserviceURL);
-            var rec = new HttpRequestMessage();
-            rec.RequestUri = new Uri(this.WebserviceURL+ routeRest);
+            try
+            {
+                // client.BaseAddress = new Uri(this.WebserviceURL);
+                var rec = new HttpRequestMessage();
+                rec.RequestUri = new Uri(this.WebserviceURL + routeRest);
 
-            if (this.Method == "POST")
-            {              
-                rec.Content = GetHttpContent();
-                rec.Method = HttpMethod.Post;
-            }else if (this.Method == "PUT")
-            {
-                rec.Content = GetHttpContent();
-                rec.Method = HttpMethod.Put;
-            }
-            else if (this.Method == "DELETE")
-            {
-                rec.Content = GetHttpContent();
-                rec.Method = HttpMethod.Put;
-            }
-            else if (this.Method == "GET")
-            {
-                rec.Method = HttpMethod.Get;
-            }
-           
-            var result = await client.SendAsync(rec);
+                if (this.Method == "POST")
+                {
+                    rec.Content = GetHttpContent();
+                    rec.Method = HttpMethod.Post;
+                }
+                else if (this.Method == "PUT")
+                {
+                    rec.Content = GetHttpContent();
+                    rec.Method = HttpMethod.Put;
+                }
+                else if (this.Method == "DELETE")
+                {
+                    rec.Content = GetHttpContent();
+                    rec.Method = HttpMethod.Put;
+                }
+                else if (this.Method == "GET")
+                {
+                    rec.Method = HttpMethod.Get;
+                }
 
-            if (result.IsSuccessStatusCode)
-            {
-                resp = await result.Content.ReadAsStringAsync();
-                if (SuccessCallbackFunction != null)
+                var result = await client.SendAsync(rec);
+
+                if (result.IsSuccessStatusCode)
                 {
-                    SuccessCallbackFunction(resp);
+                    resp = await result.Content.ReadAsStringAsync();
+                    if (SuccessCallbackFunction != null)
+                    {
+                        SuccessCallbackFunction(resp);
+                    }
                 }
-            }
-            else
-            {
-                resp = await result.Content.ReadAsStringAsync(); // result.StatusCode.ToString();
-                if (ErrorCallbackFunction != null)
+                else
                 {
-                    ErrorCallbackFunction(resp);
+                    resp = await result.Content.ReadAsStringAsync(); // result.StatusCode.ToString();
+                    if (ErrorCallbackFunction != null)
+                    {
+                        ErrorCallbackFunction(resp);
+                    }
                 }
+                return resp;
             }
-            return resp;
+            catch (Exception ex)//OperationCanceledException
+            {
+                return ex.Message;
+            }
         }
 
-        private async void Upload(string filePath,string rota)
+        private async void Upload(string filePath, string rota)
         {
             //Guid.NewGuid().ToString(),
             var resp = string.Empty;
             this.client.DefaultRequestHeaders.Add("User-Agent", "CBS Brightcove API Service");
 
             using (var content = new MultipartFormDataContent())
-            {               
+            {
                 string assetName = Path.GetFileName(filePath);
 
                 //Content-Disposition: form-data; name="json"
@@ -167,9 +174,9 @@ namespace Colaboro.Services
 
                 //content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
                 client.BaseAddress = new Uri(this.WebserviceURL);
-               // Task<HttpResponseMessage> result = client.PostAsync(rota, content);
+                // Task<HttpResponseMessage> result = client.PostAsync(rota, content);
                 var result = await client.PostAsync(rota, content);
-                
+
                 if (result.IsSuccessStatusCode)
                 {
                     resp = await result.Content.ReadAsStringAsync();
@@ -187,7 +194,7 @@ namespace Colaboro.Services
                 }
 
             }
-            
+
         }
 
         /*exemplo de uso 
