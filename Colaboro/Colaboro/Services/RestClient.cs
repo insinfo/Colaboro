@@ -239,6 +239,24 @@ namespace Colaboro.Services
             }
         }
 
+        /*exemplo de metodo assincono */
 
+        /*//metodo sincono de trabalho demorado
+        private string TrabalhoPesadoDemorado(string assessment, string filename)
+        {
+            // Do stuff    
+            Thread.Sleep(5000);
+
+            return "55";
         }
+        Em seguida, você pode criar um wrapper assíncrono 
+
+        private async Task<string> TrabalhoPesadoDemoradoAsync(string assessment, string filename)
+        {
+            return await Task.Run(() => TrabalhoPesadoDemorado(assessment, filename));
+        }
+         
+        */
+
+    }
 }
