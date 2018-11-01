@@ -25,12 +25,9 @@
                        IsVisible="False" 
                        TextColor="#ffffff" />
 
-
                     <Button x:Name="btnEntrar" HeightRequest="40" Text="Entrar" BackgroundColor="#5fd0d0" TextColor="#ffffff" />
                     <Button x:Name="btnCadastrar" HeightRequest="40" Text="Cadastrar" BackgroundColor="BlueViolet" TextColor="#ffffff"  />
-
-               
-
+              
                 </StackLayout>
                 <Button x:Name="btnEsqueceuSenha"  Text="Esqueceu a senha?" BackgroundColor="Transparent" TextColor="#ffffff"  />
 
