@@ -1,6 +1,7 @@
 ﻿
 using Acr.UserDialogs;
 using Colaboro.Models;
+using Colaboro.Services;
 using JWT;
 using JWT.Algorithms;
 using JWT.Builder;
@@ -43,7 +44,23 @@ namespace Colaboro.Views
                 passwordEntry.Focus();
                 return;
             }
-            await Navigation.PushModalAsync(new MainPage());
+
+            var dialog = UserDialogs.Instance;//.Loading("Carregando...",null,null,false);
+            dialog.ShowLoading();
+            //await Task.Delay(5000);
+          
+          
+            RestClient rest = new RestClient();
+            rest.DataToSender = new { userName = usernameEntry.Text, password = passwordEntry.Text };
+            rest.SetMethodPOST();
+           // rest.ErrorCallbackFunction = (resp) => {  formValidationInfoLabel.Text =resp; Utils.ShowAlert(this, resp); };
+           // rest.SuccessCallbackFunction = delegate (string resp) { Utils.ShowAlert(this, resp); };
+            rest.WebserviceURL = "http://producao.riodasostras.rj.gov.br";
+            var resp = await rest.Exec("/api/auth/login");
+            dialog.HideLoading();
+            dialog.Alert(resp);
+           
+            //await Navigation.PushModalAsync(new MainPage());
         }        
         /*
         protected override bool OnBackButtonPressed()
