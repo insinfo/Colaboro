@@ -2,14 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Colaboro.Views.LoginPage"
+             xmlns:skia="clr-namespace:Colaboro.ColabControls"
+             
              Padding="0"
              BackgroundColor="#3b4455"
              >
 
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never" >
-
             <StackLayout Spacing="10">
+                <!--
+                <skia:GradientFrame  VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        OuterBackgroundColor="Transparent"
+                        InnerBackgroundColorStart="DarkBlue"
+                        InnerBackgroundColorEnd="LightBlue"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        BorderRadius="25" 
+                        FillOrientation="Vertical">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Sample Text 1" />
+                        <Label Text="Sample Text 2" />
+                    </StackLayout>
+                </skia:GradientFrame >-->
+
                 <!-- left, top, right, bottom -->
                 <Image Source="jubarteLogo.png" WidthRequest="110" Margin="0,40,0,5"></Image>
                 <StackLayout Spacing="10" Margin="16" >
