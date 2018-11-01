@@ -90,9 +90,8 @@ namespace Colaboro.Services
             return null;
         }
 
-        public async void Exec(string routeRest)
-        {
-           
+        public async Task<string> Exec(string routeRest="")
+        {           
             var resp = string.Empty;
            
            // client.BaseAddress = new Uri(this.WebserviceURL);
@@ -130,11 +129,13 @@ namespace Colaboro.Services
             }
             else
             {
+                resp = await result.Content.ReadAsStringAsync(); // result.StatusCode.ToString();
                 if (ErrorCallbackFunction != null)
                 {
-                    ErrorCallbackFunction(result.StatusCode.ToString());
+                    ErrorCallbackFunction(resp);
                 }
             }
+            return resp;
         }
 
         private async void Upload(string filePath,string rota)

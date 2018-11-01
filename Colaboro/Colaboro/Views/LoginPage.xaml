@@ -21,8 +21,8 @@
                        Placeholder="Senha"
                        IsPassword="True" HeightRequest="40" BackgroundColor="White"/>
 
-                    <Label Text="Usuario ou senha invalidos" 
-                       IsVisible="False" 
+                    <Label x:Name="formValidationInfoLabel" Text="Usuario ou senha invalidos" 
+                       IsVisible="True" 
                        TextColor="#ffffff" />
 
 
