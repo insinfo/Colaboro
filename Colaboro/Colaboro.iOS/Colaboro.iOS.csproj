@@ -175,4 +175,19 @@
   <ItemGroup>
     <BundleResource Include="Resources\lamp.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconeBueiro3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconeLampadaQueimada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconeSemaforo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconeTerrenoCheioLixo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconeReturn.png" />
+  </ItemGroup>
 </Project>

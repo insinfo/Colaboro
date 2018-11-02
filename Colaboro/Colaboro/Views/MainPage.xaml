@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Colaboro"
              x:Class="Colaboro.Views.MainPage"    
-              Padding="0"
+             Padding="0,0,0,0"
              BackgroundColor="#3b4455"
              >
     <ContentPage.Content>
@@ -20,14 +20,33 @@
                 </DataTemplate>
             </ListView.ItemTemplate> 
         </ListView>  -->
-        <StackLayout Orientation="Vertical">
-            <Label Text="Serviços" Margin="0,22,0,10" FontSize="25" TextColor="White" HorizontalTextAlignment="Center"></Label>
+        <StackLayout Orientation="Vertical" Spacing="0" Margin="0" Padding="0">
+
+            <Grid Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="45" />                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Row="1" Grid.Column="0"  BackgroundColor="#000000" Spacing="0" Margin="0" VerticalOptions="FillAndExpand">
+                    <Image WidthRequest="10" Source="iconeReturn.png"></Image>
+                </StackLayout>
+
+                <Label Grid.Row="1" Grid.Column="1" BackgroundColor="Aqua" Text="Serviços" Margin="0" FontSize="25" TextColor="White" HorizontalTextAlignment="Center"></Label>
+            </Grid>
+                     
+            
             <ScrollView>
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical" Spacing="0" Margin="0" Padding="0">
+                    
                     <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
                          Padding="20"
-                      BackgroundColor="Accent" >
-                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
+                      BackgroundColor="#3D316B" >
+                        <Image Source="iconeLampadaQueimada.png" HorizontalOptions="End"  WidthRequest="100"  Aspect="AspectFit"/>
                         <Label Text="Troca de lampada com defeito"
                    FontSize="25"
                    TextColor="White"
@@ -37,64 +56,39 @@
 
                     <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
                          Padding="20"
-                      BackgroundColor="Accent" >
-                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
-                        <Label Text="Troca de lampada com defeito"
+                      BackgroundColor="#3B7F82" >
+                        <Image Source="iconeBueiro3.png" HorizontalOptions="End"  WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
+                        <Label Text="Limpeza de bueiro entupido"
                    FontSize="25"
                    TextColor="White"
                    VerticalTextAlignment="Center" 
                    HorizontalOptions="StartAndExpand" />
                     </StackLayout>
+
                     <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
                          Padding="20"
-                      BackgroundColor="Accent" >
-                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
-                        <Label Text="Troca de lampada com defeito"
+                      BackgroundColor="#823B80" >
+                        <Image Source="iconeSemaforo.png" HorizontalOptions="End"  WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
+                        <Label Text="Conserto de semáforo danificado"
                    FontSize="25"
                    TextColor="White"
                    VerticalTextAlignment="Center" 
                    HorizontalOptions="StartAndExpand" />
                     </StackLayout>
+
                     <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
                          Padding="20"
-                      BackgroundColor="Accent" >
-                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
-                        <Label Text="Troca de lampada com defeito"
+                      BackgroundColor="#B55353" >
+                        <Image Source="iconeTerrenoCheioLixo.png" HorizontalOptions="End"  WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
+                        <Label Text="Limpeza de terreno baldio cheio de lixo"
                    FontSize="25"
                    TextColor="White"
                    VerticalTextAlignment="Center" 
                    HorizontalOptions="StartAndExpand" />
                     </StackLayout>
-                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
-                         Padding="20"
-                      BackgroundColor="Accent" >
-                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
-                        <Label Text="Troca de lampada com defeito"
-                   FontSize="25"
-                   TextColor="White"
-                   VerticalTextAlignment="Center" 
-                   HorizontalOptions="StartAndExpand" />
-                    </StackLayout>
-                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
-                         Padding="20"
-                      BackgroundColor="Accent" >
-                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
-                        <Label Text="Troca de lampada com defeito"
-                   FontSize="25"
-                   TextColor="White"
-                   VerticalTextAlignment="Center" 
-                   HorizontalOptions="StartAndExpand" />
-                    </StackLayout>
-                    <StackLayout Margin="0,0,0,0" Orientation="Horizontal" 
-                         Padding="20"
-                      BackgroundColor="Accent" >
-                        <Image Source="lamp.png" HorizontalOptions="End"  WidthRequest="100"/>
-                        <Label Text="Troca de lampada com defeito"
-                   FontSize="25"
-                   TextColor="White"
-                   VerticalTextAlignment="Center" 
-                   HorizontalOptions="StartAndExpand" />
-                    </StackLayout>
+                    
+
+
                 </StackLayout>
             </ScrollView>
         </StackLayout>

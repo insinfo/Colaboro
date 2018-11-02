@@ -46,21 +46,18 @@ namespace Colaboro.Views
             }
 
             var dialog = UserDialogs.Instance;//.Loading("Carregando...",null,null,false);
-            dialog.ShowLoading();
-            //await Task.Delay(5000);
-          
+            dialog.ShowLoading();                     
           
             RestClient rest = new RestClient();
             rest.DataToSender = new { userName = usernameEntry.Text, password = passwordEntry.Text };
             rest.SetMethodPOST();
-           // rest.ErrorCallbackFunction = (resp) => {  formValidationInfoLabel.Text =resp; Utils.ShowAlert(this, resp); };
-           // rest.SuccessCallbackFunction = delegate (string resp) { Utils.ShowAlert(this, resp); };
-            rest.WebserviceURL = "http://producao.riodasostras.rj.gov.br";
-            var resp = await rest.Exec("/api/auth/login");
+            rest.ErrorCallbackFunction = (res) => {  formValidationInfoLabel.Text = res; Utils.ShowAlert(this, res); };
+            rest.SuccessCallbackFunction = (res) => {  Navigation.PushModalAsync(new MainPage()); };           
+            await rest.Exec("/api/auth/login");
             dialog.HideLoading();
-            dialog.Alert(resp);
+            //dialog.Alert(resp);
            
-            //await Navigation.PushModalAsync(new MainPage());
+            //
         }        
         /*
         protected override bool OnBackButtonPressed()

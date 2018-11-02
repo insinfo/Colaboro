@@ -13,7 +13,7 @@ namespace Colaboro.Services
     public class RestClient
     {
         public string Method { get; set; } = "POST";
-        public string WebserviceURL { get; set; } = null;
+        public string WebserviceURL { get; set; } = "https://jubarte.riodasostras.rj.gov.br";
         public string DataTypeFormat { get; set; } = "json";
         public object DataToSender { get; set; } = null;
         public string SenderDataFormat { get; set; } = "application/json";
@@ -27,7 +27,7 @@ namespace Colaboro.Services
         public RestClient()
         {
             this.client = new HttpClient();
-            this.client.DefaultRequestHeaders.Add("User-Agent", "App Jubarte from " + RuntimeInformation.OSDescription);
+            this.client.DefaultRequestHeaders.Add("User-Agent", "appjubarte");//RuntimeInformation.OSDescription
         }
 
         public void SetMethodGET()
