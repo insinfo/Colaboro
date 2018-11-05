@@ -149,8 +149,7 @@ namespace Colaboro.Services
         private async void Upload(string filePath, string rota)
         {
             //Guid.NewGuid().ToString(),
-            var resp = string.Empty;
-            this.client.DefaultRequestHeaders.Add("User-Agent", "CBS Brightcove API Service");
+            var resp = string.Empty;            
 
             using (var content = new MultipartFormDataContent())
             {

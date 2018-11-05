@@ -8,8 +8,8 @@
     <!-- comentario -->
 
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Never" >                    
-            <StackLayout Spacing="10">
+        <ScrollView VerticalScrollBarVisibility="Never"  BackgroundColor="#3b4455">
+            <StackLayout Spacing="10"  BackgroundColor="#3b4455">
                 
                 <Label TextColor="White" FontSize="30" HorizontalTextAlignment="Center" Margin="0,10,0,10">Cadastro</Label>
                 
