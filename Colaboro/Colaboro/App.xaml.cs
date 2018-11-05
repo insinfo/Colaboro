@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Colaboro
 {         
     public partial class App : Application
-    {           
-
+    {
+        static ColaboroDatabase database;
         public App()
         {
             InitializeComponent();
@@ -27,7 +27,22 @@ namespace Colaboro
              nav.BarTextColor = (Color)App.Current.Resources["primary"];
              MainPage = nav;*/
             MainPage = new Views.LoginPage();
-        }              
+        }
+
+        public static ColaboroDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    var fileName = "ColabSQLite.db3";
+                    var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), fileName);
+                    Debug.WriteLine(path);
+                    database = new ColaboroDatabase(path);
+                }
+                return database;
+            }
+        }
 
         protected override void OnStart()
         {

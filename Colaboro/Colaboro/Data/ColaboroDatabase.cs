@@ -11,15 +11,37 @@ namespace Colaboro.Data
      
     public class ColaboroDatabase
     {
-        readonly SQLiteAsyncConnection database;
+        readonly SQLiteAsyncConnection asyncConnection;
+        readonly SQLiteConnection connection;
+
 
         public ColaboroDatabase(string dbPath)
         {
-            database = new SQLiteAsyncConnection(dbPath);
-            database.CreateTableAsync<Usuario>().Wait();
+            // asyncConnection = new SQLiteAsyncConnection(dbPath);
+            // database.CreateTableAsync<Usuario>().Wait();
+            connection = new SQLiteConnection(dbPath);
+            connection.CreateTable<KeyValuePair>();
         }
 
-        public Task<List<Usuario>> GetItemsAsync()
+        public void SetItem(string chave, string valor)
+        {
+            connection.Query<KeyValuePair>("insert or replace into "KeyValuePair" ("Key","Value") 
+VALUES((select "Key" from "KeyValuePair" where "Key" = 'token'), 'testsdf') ");
+        }
+
+        public string GetItem(string chave)
+        {
+           var list = connection.Query<KeyValuePair>(string.Format("SELECT * FROM [KeyValuePair] WHERE [Key] = '"+chave+"' limit 1"));
+            if(list != null && list.Count > 0)
+            {
+                return list[0].Value;
+            }
+            return null;
+
+        }
+
+
+        /*public Task<List<Usuario>> GetItemsAsync()
         {
             return database.Table<Usuario>().ToListAsync();
         }
@@ -27,9 +49,7 @@ namespace Colaboro.Data
         public Task<List<Usuario>> GetItemsNotDoneAsync()
         {
             return database.QueryAsync<Usuario>("SELECT * FROM [Usuario] WHERE [Ativo] = 0");
-        }
-
-       
+        }              
 
         public Task<Usuario> GetItemAsync(string username)
         {
@@ -47,7 +67,7 @@ namespace Colaboro.Data
                      result = true;
                      Debug.WriteLine(t.Result.Username);
                  }
-             }, TaskScheduler.FromCurrentSynchronizationContext());*/
+             }, TaskScheduler.FromCurrentSynchronizationContext());
             if (count > 0)
             {
                 result = true;
@@ -72,6 +92,6 @@ namespace Colaboro.Data
         public Task<int> DeleteItemAsync(Usuario item)
         {
             return database.DeleteAsync(item);
-        }
+        }*/
     }
 }

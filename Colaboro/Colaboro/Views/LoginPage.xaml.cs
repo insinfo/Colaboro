@@ -3,6 +3,7 @@ using Colaboro.Services;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -38,29 +39,33 @@ namespace Colaboro.Views
                 passwordEntry.Focus();
                 return;
             }
-   
+
 
             //await this.Navigation.PushModalAsync(new MainPage());
 
             //var dialog = UserDialogs.Instance;//.Loading("Carregando...",null,null,false);
             //dialog.ShowLoading();                     
-            
-              RestClient rest = new RestClient();
+
+            /*  RestClient rest = new RestClient();
               rest.DataToSender = new { userName = usernameEntry.Text, password = passwordEntry.Text };
               rest.SetMethodPOST();
               rest.ErrorCallbackFunction = (res) => {
                   // Utils.ShowAlert(this, res);
-                  formValidationInfoLabel.Text = res;
+                  usernameEntry.Text = res;
                   Debug.WriteLine(res);
               };
               rest.SuccessCallbackFunction = (res) => {
-                  formValidationInfoLabel.Text = res;
+                  usernameEntry.Text = res;
                   Debug.WriteLine(res);
                   /// Navigation.PushModalAsync(new MainPage());
               };           
               await rest.Exec("/api/auth/login");
             // dialog.HideLoading();
-            //dialog.Alert(resp);
+            //dialog.Alert(resp);*/
+
+            App.Database.SetItem("token", "teste");
+
+           
 
             //
         }
