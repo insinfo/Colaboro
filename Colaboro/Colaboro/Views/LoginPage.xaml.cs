@@ -1,15 +1,10 @@
-﻿
-using Acr.UserDialogs;
-using Colaboro.Models;
+﻿using Colaboro.Models;
 using Colaboro.Services;
-using JWT;
-using JWT.Algorithms;
-using JWT.Builder;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -45,20 +40,35 @@ namespace Colaboro.Views
                 return;
             }
 
-            var dialog = UserDialogs.Instance;//.Loading("Carregando...",null,null,false);
-            dialog.ShowLoading();                     
-          
-            RestClient rest = new RestClient();
-            rest.DataToSender = new { userName = usernameEntry.Text, password = passwordEntry.Text };
-            rest.SetMethodPOST();
-            rest.ErrorCallbackFunction = (res) => {  formValidationInfoLabel.Text = res; Utils.ShowAlert(this, res); };
-            rest.SuccessCallbackFunction = (res) => {  Navigation.PushModalAsync(new MainPage()); };           
-            await rest.Exec("/api/auth/login");
-            dialog.HideLoading();
-            //dialog.Alert(resp);
+
+            //await this.Navigation.PushModalAsync(new MainPage());
+
+            //var dialog = UserDialogs.Instance;//.Loading("Carregando...",null,null,false);
+            //dialog.ShowLoading();                     
+
+            /*  RestClient rest = new RestClient();
+              rest.DataToSender = new { userName = usernameEntry.Text, password = passwordEntry.Text };
+              rest.SetMethodPOST();
+              rest.ErrorCallbackFunction = (res) => {
+                  // Utils.ShowAlert(this, res);
+                  usernameEntry.Text = res;
+                  Debug.WriteLine(res);
+              };
+              rest.SuccessCallbackFunction = (res) => {
+                  usernameEntry.Text = res;
+                  Debug.WriteLine(res);
+                  /// Navigation.PushModalAsync(new MainPage());
+              };           
+              await rest.Exec("/api/auth/login");
+            // dialog.HideLoading();
+            //dialog.Alert(resp);*/
+
+            App.Database.SetItem("token", "teste");
+
            
+
             //
-        }        
+        }
         /*
         protected override bool OnBackButtonPressed()
         {
