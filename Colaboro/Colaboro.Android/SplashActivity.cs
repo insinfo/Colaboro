@@ -24,22 +24,23 @@ namespace Colaboro.Droid
             base.OnCreate(savedInstanceState);
 
             // Creating a new RelativeLayout
-            RelativeLayout relativeLayout = new RelativeLayout(this);
-            
+            RelativeLayout relativeLayout = new RelativeLayout(this);            
             // Defining the RelativeLayout layout parameters with Fill_Parent
             RelativeLayout.LayoutParams relativeLayoutParams = 
             new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MatchParent, RelativeLayout.LayoutParams.MatchParent);
-            
-            LottieAnimationView animationView = new LottieAnimationView(this);
+            /*LottieAnimationView animationView = new LottieAnimationView(this);
             animationView.LayoutParameters = relativeLayoutParams;
-            animationView.SetAnimation("favourite_app_icon.json");
-            animationView.PlayAnimation();
-           
+            animationView.SetAnimation("spinner_into_confirmation.json");
+            animationView.PlayAnimation();           
             animationView.AddAnimatorListener(this);
-
-            relativeLayout.AddView(animationView);
+            relativeLayout.AddView(animationView);*/
             SetContentView(relativeLayout);
-            
+
+            StartActivity(typeof(MainActivity));
+           // OverridePendingTransition(Resource.Animation.fade_in, Resource.Animation.fade_out);
+            Finish();
+
+
             // Disable activity slide-in animation
             OverridePendingTransition(0, 0);
         }

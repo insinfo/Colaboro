@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Colaboro.Views.LoginPage"
-             xmlns:skia="clr-namespace:Colaboro.ColabControls"             
+             xmlns:colab="clr-namespace:Colaboro.ColabControls"             
              Padding="0"
              BackgroundColor="#3b4455"
              >
@@ -11,7 +11,7 @@
         <ScrollView VerticalScrollBarVisibility="Never" >
             <StackLayout Spacing="10">
                 <!--
-                <skia:GradientFrame  VerticalOptions="FillAndExpand"
+                <colab:GradientFrame  VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
                         OuterBackgroundColor="Transparent"
                         InnerBackgroundColorStart="DarkBlue"
@@ -24,18 +24,18 @@
                         <Label Text="Sample Text 1" />
                         <Label Text="Sample Text 2" />
                     </StackLayout>
-                </skia:GradientFrame >-->
+                </colab:GradientFrame >-->
 
                 <!-- left, top, right, bottom -->
                 <Image Source="jubarteLogo.png" WidthRequest="110" Margin="0,40,0,5"></Image>
                 <StackLayout Spacing="10" Margin="16" >
 
-                    <Entry x:Name="usernameEntry" Text=""  
-                       Placeholder="Usuario" HeightRequest="40" BackgroundColor="White"/>
+                    <colab:CustomEntry x:Name="usernameEntry" Text=""  
+                       Placeholder="Usuario" HeightRequest="40" />
 
-                    <Entry x:Name="passwordEntry" Text="" 
+                    <colab:CustomEntry x:Name="passwordEntry" Text="" 
                        Placeholder="Senha"
-                       IsPassword="True" HeightRequest="40" BackgroundColor="White"/>
+                       IsPassword="True" HeightRequest="40" />
 
                     <Label x:Name="formValidationInfoLabel" Text="Usuario ou senha invalidos" 
                        IsVisible="True" 

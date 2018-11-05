@@ -77,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\favourite_app_icon.json" />
+    <AndroidAsset Include="Assets\check.json" />
+    <AndroidAsset Include="Assets\spinner_into_confirmation.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

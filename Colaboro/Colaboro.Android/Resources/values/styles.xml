@@ -13,7 +13,7 @@
     <!--A cor da barra de status e barras de aplicativos contextuais-->
     <item name="colorPrimaryDark">@color/black</item>
     <!--A cor dos controles de interface do usuário -->
-    <item name="colorAccent">@color/white</item>
+    <item name="colorAccent">@color/colorAccent</item>
     <!--A cor de fundo da tela 
    
     A cor do texto de interface do usuário na barra de aplicativos
